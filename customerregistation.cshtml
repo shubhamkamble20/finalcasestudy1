@@ -1,0 +1,106 @@
+@model PDFandPaymentFinalCaseStdu.Models.Customer
+
+@{
+    ViewBag.Title = "CustomerRegister";
+}
+
+<h2 class="text-center">Register</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container mt-4">
+        <div class="card mx-auto" style="width: 500px;">
+            <div class="card-body">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="Salutation">Salutation</label>
+                        @Html.DropDownList("Salutation", new List<SelectListItem>
+                        {
+                            new SelectListItem { Text = "Mr", Value = "Mr" },
+                            new SelectListItem { Text = "Ms", Value = "Ms" }
+                        }, "Select Salutation", new { @class = "form-control", id = "Salutation" })
+                        @Html.ValidationMessage("Salutation", "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="AdhaarNumber">Adhaar Number</label>
+                        @Html.EditorFor(model => model.AdhaarNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Adhaar Number", id = "AdhaarNumber" } })
+                        @Html.ValidationMessageFor(model => model.AdhaarNumber, "", new { @class = "text-danger" })
+                    </div>
+                   
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="Username">Username</label>
+                        @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control", placeholder = "Username", id = "Username" } })
+                        @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="FirstName">First Name</label>
+                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", placeholder = "First Name", id = "FirstName" } })
+                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                    </div>
+                  
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="LastName">Last Name</label>
+                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", placeholder = "Last Name", id = "LastName" } })
+                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="Email">Email</label>
+                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "Email", id = "Email", type = "email" })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+
+                   
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+
+                        <label for="MobileNumber">Mobile Number</label>
+                        @Html.EditorFor(model => model.MobileNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Mobile Number", id = "MobileNumber" } })
+                        @Html.ValidationMessageFor(model => model.MobileNumber, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-6">
+                        <div>
+                            <label for="Address">Address</label>
+                            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", placeholder = "Address", id = "Address" } })
+                            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                 
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="Password">Password</label>
+                        @Html.PasswordFor(model => model.Password, new { @class = "form-control", placeholder = "Password", id = "Password" })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="ConfirmPassword">Confirm Password</label>
+                        @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm Password", id = "ConfirmPassword" })
+                        @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">Register</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+</style>
