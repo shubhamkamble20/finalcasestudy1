@@ -1,4 +1,4 @@
-//add this in models
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -10,7 +10,6 @@ namespace PDFandPaymentFinalCaseStdu.Models
         [Required(ErrorMessage = "Salutation is required")]
         public string Salutation { get; set; }
 
-      //  [Required(ErrorMessage = "Customer ID is required")]
         public int CustomerId { get; set; }
 
         [Required(ErrorMessage = "Aadhaar Number is required")]
@@ -27,8 +26,8 @@ namespace PDFandPaymentFinalCaseStdu.Models
         [Required(ErrorMessage = "Last Name is required")]
         public string LastName { get; set; }
 
-        //[Required(ErrorMessage = "Password is required")]
-        //[RegularExpression(@"^\d{8}$", ErrorMessage = "Password should be minimum 8 characters")]
+   
+        [Required(ErrorMessage = "Password is required")]
 
         [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$",
         ErrorMessage = "Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character.")]
@@ -37,7 +36,6 @@ namespace PDFandPaymentFinalCaseStdu.Models
         public string Password { get; set; }
 
         [Required(ErrorMessage = "Confirm Password is required")]
-       // [RegularExpression(@"^\d{8}$", ErrorMessage = "Password should be minimum 8 characters")]
 
         [DataType(DataType.Password)]
         [Compare("Password", ErrorMessage = "Passwords and Confirmpassword do not match")]
